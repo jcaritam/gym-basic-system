@@ -1,11 +1,11 @@
 package com.jc.gymbasicsystem.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "member_entity")
 @Data
@@ -31,4 +31,15 @@ public class MemberEntity extends BaseEntity {
     @Column(name = "date_of_birth", nullable = false)
     public String dateOfBirth;
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<DailyIncomeEntity> dailyIncomeEntities = new HashSet<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<MemberPlanEntity> memberPlanEntities = new HashSet<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<AttendanceEntity> attendanceEntities = new HashSet<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<GroupClassRegistrationEntity> groupClassRegistrationEntities = new HashSet<>();
 }

@@ -8,17 +8,18 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
-@Entity(name = "plan_entity")
+@Entity(name = "group_class_entity")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class PlanEntity extends BaseEntity {
+public class GroupClassEntity extends BaseEntity {
 
     @Id
     @UuidGenerator
-    @Column(name = "plan_id", updatable = false, nullable = false)
-    public String planId;
+    @Column(name = "group_class_id", updatable = false, nullable = false)
+    public String groupClassId;
 
     @Column(name = "name", nullable = false)
     public String name;
@@ -29,9 +30,15 @@ public class PlanEntity extends BaseEntity {
     @Column(name = "price", nullable = false)
     public float price;
 
-    @Column(name = "duration_days", nullable = false)
-    public int durationDays;
+    @Column(name = "duration_minutes", nullable = false)
+    public int durationMinutes;
 
-    @OneToMany(mappedBy = "plan")
-    private Set<MemberPlanEntity> memberPlans;
+    @Column(name = "capacity", nullable = false)
+    public int capacity;
+
+    @Column(name = "date_time", nullable = false)
+    public LocalDateTime dateTime;
+
+    @OneToMany(mappedBy = "groupClass")
+    private Set<GroupClassRegistrationEntity> groupClassRegistrations;
 }
