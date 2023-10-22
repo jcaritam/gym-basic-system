@@ -1,8 +1,6 @@
 package com.jc.gymbasicsystem.domain.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.UuidGenerator;
@@ -30,4 +28,8 @@ public class EmployeeEntity extends BaseEntity {
 
     @Column(name = "address", nullable = false)
     public String address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private UserEntity user;
 }
