@@ -10,9 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CreateUserUseCase {
 
-    private final UserRepository userRepository;
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     public CreateUserUseCase(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -22,11 +24,11 @@ public class CreateUserUseCase {
 
         UserEntity createUser = new UserEntity();
 
-        String passwordHash = passwordEncoder.encode(createUserDto.getPassword());
+//        String passwordHash = passwordEncoder.encode(createUserDto.getPassword());
 
         createUser.setUsername(createUserDto.getUsername());
-        createUser.setPassword(passwordHash);
-        createUser.setRole(createUserDto.getRole());
+//        createUser.setPassword(passwordHash);
+//        createUser.setRole(createUserDto.getRole());
         createUser.setActive(true);
         userRepository.save(createUser);
 
