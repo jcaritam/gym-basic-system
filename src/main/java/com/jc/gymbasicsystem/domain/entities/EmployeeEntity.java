@@ -29,6 +29,9 @@ public class EmployeeEntity extends BaseEntity {
     @Column(name = "address", nullable = false)
     public String address;
 
+    @Column(name = "position", nullable = true)
+    public String position;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private UserEntity user;
