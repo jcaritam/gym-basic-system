@@ -30,10 +30,10 @@ public class PromotionEntity extends BaseEntity {
     public float discount;
 
     @Column(name = "start_date", nullable = false)
-    public LocalDate startDate;
+    public String startDate;
 
     @Column(name = "end_date", nullable = false)
-    public LocalDate endDate;
+    public String endDate;
 
     @OneToMany(mappedBy = "promotion")
     private Set<MemberPlanEntity> memberPlans;

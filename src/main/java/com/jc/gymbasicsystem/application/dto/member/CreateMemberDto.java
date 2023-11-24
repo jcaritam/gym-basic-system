@@ -31,5 +31,6 @@ public class CreateMemberDto {
     public String dateOfBirth;
 
     @Min(value = 8, message = "DNI must be 8 digits")
+    @NotBlank(message = "DNI is mandatory")
     public String dni;
 }

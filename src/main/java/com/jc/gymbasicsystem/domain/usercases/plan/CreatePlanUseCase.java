@@ -22,6 +22,7 @@ public class CreatePlanUseCase {
         planEntity.setDescription(createPlanDto.description);
         planEntity.setPrice(createPlanDto.price);
         planEntity.setDurationDays(createPlanDto.durationDays);
+        planEntity.setActive(true);
 
         return planRepository.save(planEntity);
     }
