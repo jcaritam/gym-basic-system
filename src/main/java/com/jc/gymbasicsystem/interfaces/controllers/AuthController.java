@@ -4,6 +4,7 @@ import com.jc.gymbasicsystem.application.dto.CreateUserDto;
 import com.jc.gymbasicsystem.application.dto.auth.AuthenticationResponse;
 import com.jc.gymbasicsystem.application.dto.auth.UserCredentialsDto;
 import com.jc.gymbasicsystem.application.services.AuthService;
+import com.jc.gymbasicsystem.domain.entities.UserEntity;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,8 @@ public class AuthController {
     private AuthService authService;
 
     @GetMapping("/check-auth")
-    public String checkAuth() {
-        return "check-auth";
+    public ResponseEntity<UserEntity> checkAuth() {
+        return ResponseEntity.ok(authService.checkAuth());
     }
 
     @PostMapping("/login")
